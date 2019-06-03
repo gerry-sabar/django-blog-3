@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+        {% for article in articles %}
+        <div class="post-preview">
+            <a href="{{article.id}}">
+                <h2 class="post-title">
+                    {{ article.title }}
+                </h2>
+
+                <!-- if article contains image, display image in proper bootstrap clean blog style -->
+                {% if article.image %}
+                    <img class="img-fluid" src="{{ article.image.url}}" alt="">
+                {% endif %}
+
+                <h3 class="post-subtitle">
+                    {{article.content|truncatechars:60}}
+                </h3>
+            </a>
+            <p class="post-meta">Posted by
+                <a href="#">Start Bootstrap</a>
+                on September 24, 2019</p>
+        </div>
+        <hr>
+
+        {% endfor %}
+        <div class="clearfix">
+            {% if articles.has_previous %}
+                <a class="btn btn-primary float-right" href="?page={{ articles.previous_page_number }}">&laquo; Newer Post</a>
+                <a class="btn btn-primary float-right" href="?page=1">First Page</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ articles.number }} of {{ articles.paginator.num_pages }}.
+            </span>
+
+            {% if articles.has_next %}
+                <a class="btn btn-primary float-right" href="?page={{ articles.next_page_number }}">Older Posts &rarr;</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

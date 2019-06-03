@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+
+        <h1>Form </h1>
+
+    <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}  <!-- implementing csrf token for security -->
+            {{ form.as_p }}  <!-- parsing form into html -->
+            <input type="submit" value="Create Post"/>
+        </form>
+
+    </div>
+</div>
+{% endblock content %}

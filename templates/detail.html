@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+
+        <h1>{{article.title}}</h1>
+
+        <!-- if article contains image, display image in proper bootstrap clean blog style -->
+        {% if article.image %}
+            <img class="img-fluid" src="{{ article.image.url}}" alt="">
+        {% endif %}
+
+        <p>
+            {{article.content}}
+        </p>
+
+
+    </div>
+</div>
+
+{% endblock content %}
